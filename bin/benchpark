@@ -33,6 +33,24 @@ def main():
     parser.add_argument(
         "-V", "--version", action="store_true", help="show version number and exit"
     )
+    parser.add_argument(
+        "-d", "--debug",   action="store_true", help="print debugging info"
+    )
+    parser.add_argument(
+        "-D", "--dry-run", action="store_true", help="Show what commands would be executed"
+    )
+    parser.add_argument(
+        "-s", "--spack-branch", help="specify alternative spack branch",
+    )
+    parser.add_argument(
+        "-S", "--spack-repo", help="specify alternative spack repository",
+    )
+    parser.add_argument(
+        "-r", "--ramble-branch", help="specify alternative spack branch",
+    )
+    parser.add_argument(
+        "-R", "--ramble-repo", help="specify alternative spack repository",
+    )
 
     subparsers = parser.add_subparsers(title="Subcommands", dest="subcommand")
 
