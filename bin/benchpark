@@ -14,20 +14,27 @@ import shutil
 import subprocess
 import sys
 import yaml
+from inspect import currentframe, getframeinfo
 
-DEBUG = False
+DEBUG = False   # set using -d aka --debug
 
 __version__ = "0.1.0"
 
+def get_linenumber():
+    cf = currentframe()
+    return cf.f_back.f_back.f_lineno
+
+def get_filename():
+    cf = currentframe()
+    return os.path.basename( getframeinfo(cf.f_back).filename )
 
 def debug_print(message):
-    if DEBUG:
-        print("(debug) " + str(message))
-
+    print("(debug) " + get_filename() + "::" + str(get_linenumber()) + " " + message, file=sys.stderr )
 
 def main():
     if sys.version_info[:2] < (3, 8):
         raise Exception("Benchpark requires at least python 3.8+.")
+
 
     parser = argparse.ArgumentParser(description="Benchpark")
     parser.add_argument(
@@ -60,6 +67,8 @@ def main():
     benchpark_tags(subparsers, actions)
 
     args = parser.parse_args()
+    DEBUG = args.debug
+    debug_print(f"Using Python version {sys.version_info}")
     no_args = True if len(sys.argv) == 1 else False
 
     if no_args:
