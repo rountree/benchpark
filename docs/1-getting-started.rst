@@ -3,6 +3,15 @@
 
    SPDX-License-Identifier: Apache-2.0
 
+=====================
+Software Requirements
+=====================
+
+.. literalinclude:: ../requirements.txt
+   :caption: Python modules to be installed via pip
+
+
+
 ==============================
 Getting Started with Benchpark
 ==============================
