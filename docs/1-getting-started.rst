@@ -7,7 +7,7 @@
 Software Requirements
 =====================
 
-.. literalinclude:: ../requirements.txt
+.. literalinclude:: /requirements.txt
    :caption: Python modules to be installed via pip
 
 
